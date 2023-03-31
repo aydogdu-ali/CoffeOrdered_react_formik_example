@@ -1,6 +1,58 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:#C04A82
+}
+/*Register*/
+
+.register {
+  margin-top: 8rem;
+  width: 600px;
+  height: 100vh;
+}
+
+.form-input {
+  width: 100%;
+  padding: 7px 2px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+
+input {
+  padding: 7px 8px;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 10px;
+    margin: 7px 0px;
+    border-color: #BE6DB7;
+  color:#DC8449;
+  font-weight: 600;
+}
+
+
+input:focus{
+ border-color:#FDD36A
+}
+
+button {
+ color:#C04A82;
+ letter-spacing: 0.1rem;
+ font-weight: 800;
+ background-color:#FDD36A ;
+ display: inline-block;
+ width: 8rem;
+ margin: 2rem 15rem;
+ padding:  0.5rem 1rem ;
+ border: none;
+ border-radius: 20px;
+}
