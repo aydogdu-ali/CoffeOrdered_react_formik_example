@@ -18,6 +18,7 @@ const Register = () => {
   return (
    
       <form className="register">
+        <h1 >Lütfen formu eksizsiz doldurunuz</h1>
         <div className="form-input">
           <label> Email</label>
           <input

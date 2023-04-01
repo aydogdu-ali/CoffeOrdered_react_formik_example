@@ -2,21 +2,54 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  background-color:#C04A82
+  background-color: #c04a82;
 }
+
+/*Navbar*/
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navbar img {
+  width: 4rem;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+
+  margin-right: 50px;
+}
+
+.links a {
+  color: bisque;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
 /*Register*/
 
 .register {
+ margin: auto;
   margin-top: 8rem;
   width: 600px;
   height: 100vh;
+}
+.register h1{
+  text-align: center;
+  color: #fdd36a;
+  margin-bottom: 2rem;
 }
 
 .form-input {
@@ -33,26 +66,25 @@ input {
   font-size: 16px;
   width: 100%;
   border-radius: 10px;
-    margin: 7px 0px;
-    border-color: #BE6DB7;
-  color:#DC8449;
+  margin: 7px 0px;
+  border-color: #be6db7;
+  color: #dc8449;
   font-weight: 600;
 }
 
-
-input:focus{
- border-color:#FDD36A
+input:focus {
+  border-color: #fdd36a;
 }
 
 button {
- color:#C04A82;
- letter-spacing: 0.1rem;
- font-weight: 800;
- background-color:#FDD36A ;
- display: inline-block;
- width: 8rem;
- margin: 2rem 15rem;
- padding:  0.5rem 1rem ;
- border: none;
- border-radius: 20px;
+  color: #c04a82;
+  letter-spacing: 0.1rem;
+  font-weight: 800;
+  background-color: #fdd36a;
+  display: inline-block;
+  width: 8rem;
+  margin: 2rem 15rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
 }
