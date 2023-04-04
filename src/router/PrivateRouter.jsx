@@ -6,9 +6,9 @@ const PrivateRouter = () => {
 
     // replace eğer kullanıcı giriş yapmadıysa login sayfasına yönlendirilen kullanıcın tarayıcıdan geri gelmesini sağlar, Bunu yazmazsak kullanıcı geri sayfaya gidemez
  
-     const { currentUser } = useContext(AuthContext);
-     console.log(currentUser)
-    
+    //  const { currentUser } = useContext(AuthContext);
+    //  console.log(currentUser)
+    const currentUser = true
 
    return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
 

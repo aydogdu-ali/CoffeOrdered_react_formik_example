@@ -142,3 +142,19 @@ font-weight: 600;
   color:  bisque;
   line-height: 1.7rem;
 }
+
+
+/*Product*/
+.product{
+display: flex;
+flex-direction: column;
+
+}
+
+
+.coffeePicture{
+
+  width: 10%;
+  height: 10%;
+  border-radius: 20px;
+}

@@ -20,20 +20,20 @@ const Login = () => {
 
 
 
-  const { values, errors, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-     
-    },
+  const { values, errors, handleChange, handleSubmit, touched, handleBlur } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
 
-    validationSchema: loginSchema,
-  onSubmit : (values,actions) => {
-   UserLogin(values.email, values.password, navigate)
-   actions.resetForm()
-   console.log("tıklandı", values)
-}
-  });
+      validationSchema: loginSchema,
+      onSubmit: (values, actions) => {
+        UserLogin(values.email, values.password, navigate);
+        actions.resetForm();
+        console.log("tıklandı", values);
+      },
+    });
 
 
   return (
@@ -49,9 +49,12 @@ const Login = () => {
             id="email"
             autoComplete="off"
             placeholder="lütfen mail adresinizi giriniz!"
-            className={errors.email ? "input-error" : ""}
+            onBlur={handleBlur}
+            className={errors.email && touched.email ? "input-error" : ""}
           />
-          {errors.email && <p className="error">{errors.email}</p>}
+          {errors.email && touched.email && (
+            <p className="error">{errors.email}</p>
+          )}
         </div>
         <div className="form-input">
           <label> Şifre</label>
@@ -62,9 +65,12 @@ const Login = () => {
             id="password"
             autoComplete="off"
             placeholder="lütfen şifrenizi giriniz!"
-            className={errors.password ? "input-error" : ""}
+            onBlur={handleBlur}
+            className={errors.password && touched.password ? "input-error" : ""}
           />
-          {errors.password && <p className="error">{errors.password}</p>}
+          {errors.password && touched.password && (
+            <p className="error">{errors.password}</p>
+          )}
         </div>
         <Link className="regBtn" to="/register">
           Üyelik İçin Tıklayınız
