@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserLogin } from '../firebase/auth';
-import AuthContextProvider, { AuthContext } from '../context/AuthContextProvider';
+import  { AuthContext } from '../context/AuthContextProvider';
 
 
 
@@ -15,12 +15,7 @@ const Login = () => {
  const navigate = useNavigate();
     const { currentUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (currentUser) {
-      navigate("/kahveler");
-      // toastSuccessNotify("Login Performed");
-    }
-  }, [currentUser]);
+ 
 
 
 
@@ -34,8 +29,7 @@ const Login = () => {
 
     validationSchema: loginSchema,
   onSubmit : (values,actions) => {
-   UserLogin(values.email, values.password)
-    navigate("/kahveler");
+   UserLogin(values.email, values.password, navigate)
    actions.resetForm()
    console.log("tıklandı", values)
 }
@@ -72,8 +66,11 @@ const Login = () => {
           />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
-        <button onSubmit={handleSubmit}  type="submit"
-      >
+        <Link className="regBtn" to="/register">
+          Üyelik İçin Tıklayınız
+        </Link>
+
+        <button onSubmit={handleSubmit} type="submit">
           Giriş
         </button>
       </form>

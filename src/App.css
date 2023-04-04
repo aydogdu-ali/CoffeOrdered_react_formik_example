@@ -26,6 +26,17 @@
   width: 4rem;
 }
 
+.navbarLogo{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: .9rem;
+color:#fdd36a;
+letter-spacing: 0.1rem;
+
+
+}
+
 .links {
   display: flex;
   justify-content: space-around;
@@ -88,6 +99,7 @@ button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .error{
@@ -97,4 +109,36 @@ button {
 
 .input-error{
   background-color:rgb(211, 193, 191)
+}
+
+
+.regBtn{
+  display: inline-block;
+text-decoration: none;
+background-color: #f2b314;
+padding: .5rem 0.4rem;
+border-radius: 20px;
+margin-left: 25rem;
+color:#ec12da;
+font-weight: 600; 
+  
+}
+
+.home{
+ 
+  width: 55%;
+  margin:5rem auto;
+  text-align: center;
+  color:  #f2b314;
+  font-size: 1.3rem;
+}
+
+.home h1{
+  margin-bottom: 1rem;
+}
+.home p{
+  text-align:justify;
+  margin-top: 0.7rem;
+  color:  bisque;
+  line-height: 1.7rem;
 }

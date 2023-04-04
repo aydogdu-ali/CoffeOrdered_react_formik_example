@@ -2,7 +2,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -40,10 +40,11 @@ export const createUser = async (email, password, displayName, navigate) => {
 // var olan kullanıcının giriş yapması için kullanılan yöntem.
 //navigate'i parametre olarak login componentinden aldık.
 // başarılı giriş olursa kahveler sayfasına yönlendirecek.
-  export const UserLogin = async (email, password) => {
+  export const UserLogin = async (email, password,navigate) => {
     try {
       let uselogin = await signInWithEmailAndPassword(auth, email, password);
          console.log(uselogin);
+         navigate("/kahveler")
     } catch (error) {
       console.log(error.message);
     }
@@ -61,3 +62,15 @@ export const userObserver = (setCurrentUser) => {
     }
   });
 };
+
+
+  // kullanıcı çıkış yaptığında kullanılacak yöntem
+// kullanıcıyı navigate ile sign in sayfasına yönlendirdik.
+  export const logOut = (navigate) => {
+    try {
+      signOut(auth);
+      navigate("/login")
+     } catch (error) {
+      console.log(error);
+    }
+  };
