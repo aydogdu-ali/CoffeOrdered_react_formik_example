@@ -17,6 +17,7 @@ const Register = () => {
   // const formik = useFormik({
   const { values, errors, handleChange, handleSubmit, isSubmitting } = useFormik({
     initialValues: {
+      username:"",
       email: "",
       age: "",
       password: "",
@@ -38,6 +39,18 @@ const Register = () => {
   return (
     <form className="register" onSubmit={handleSubmit}>
       <h1>Lütfen formu eksizsiz doldurunuz</h1>
+      <div className="form-input">
+        <label>Kullanıcı Adı</label>
+        <input
+          type="text"
+          value={values.username}
+          onChange={handleChange}
+          id="username"
+          placeholder="lütfen kullanıcı adı giriniz!"
+          className={errors.username ? "input-error" : ""}
+        />
+        {errors.username && <p className="error">{errors.username}</p>}
+      </div>
       <div className="form-input">
         <label> Email</label>
         <input
