@@ -1,40 +1,55 @@
 import { useFormik } from "formik";
 import React from "react";
 import { registerSchema } from "../schemas";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "../firebase/auth";
 
+// const onSubmit = (values, actions) => {
+ 
+//   console.log(values); // forma yazılan değerler vardır.
+//   console.log(actions); // form ile ilgili yapılacak methodlar tanımlı resetleme vn. gibi
+//   const displayName = username;
+//   createUser(email, password, displayName);
 
-const onSubmit = (values,actions) => {
-   console.log(values) // forma yazılan değerler vardır.
-   console.log(actions)// form ile ilgili yapılacak methodlar tanımlı resetleme vn. gibi
-
-  
-   actions.resetForm()
-   console.log("tıklandı", values)
-};
+//   actions.resetForm();
+//   console.log("tıklandı", values);
+// };
 
 const Register = () => {
+   
+   const navigate = useNavigate();
+ 
   // formik yapısının içinde kullanacağımız yapılaıı çıkartarak kullanabiliriz.
   // const formik = useFormik({
-  const { values, errors, handleChange, handleSubmit, isSubmitting } = useFormik({
-    initialValues: {
-      username:"",
-      email: "",
-      age: "",
-      password: "",
-      repeatPassword: "",
-    },
+  const { values, errors, handleChange, handleSubmit, isSubmitting } =
+    useFormik({
+      initialValues: {
+        username: "",
+        email: "",
+        password: "",
+        repeatPassword: "",
+      },
 
-    validationSchema: registerSchema,
-    onSubmit
-  });
-
-
-
-
+      validationSchema: registerSchema,
+      // onSubmit: ()=>{
+      //   // navigate("/kahveler",{replace:true, email:values.email, password: values.password})
+      //    navigate("/kahveler")
+      // }
 
 
+       onSubmit:  (values, actions) => {
+ 
+  console.log(values); // forma yazılan değerler vardır.
+  console.log(actions); // form ile ilgili yapılacak methodlar tanımlı resetleme vn. gibi
+  const displayName = username;
+  createUser(values.email, values.password, values.displayName, navigate);
+   
+  actions.resetForm();
+  console.log("tıklandı", values);
+}
 
-
+   
+    });
 
   return (
     <form className="register" onSubmit={handleSubmit}>
@@ -63,18 +78,7 @@ const Register = () => {
         />
         {errors.email && <p className="error">{errors.email}</p>}
       </div>
-      <div className="form-input">
-        <label> Yaş</label>
-        <input
-          type="number"
-          value={values.age}
-          onChange={handleChange}
-          id="age"
-          placeholder="lütfen yaşınızı  giriniz!"
-          className={errors.age ? "input-error" : ""}
-        />
-        {errors.age && <p className="error">{errors.age}</p>}
-      </div>
+     
       <div className="form-input">
         <label> Şifre</label>
         <input

@@ -11,11 +11,7 @@ export const registerSchema = yup.object().shape({
     .string()
     .email("Geçerli bir eposta adresi giriniz")
     .required("Zorunlu alan"),
-  age: yup
-    .number()
-    .positive("0'den büyük olmalıdır")
-    .integer("Yaşınızı tam sayı olarak giriniz")
-    .required("Zorunlu alan"),
+  
   password: yup
     .string()
     .min(6, "En az 6 karakter olmalı")

@@ -2,7 +2,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,25 +18,46 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 
 // kullanıcı oluşturmak için kullanılan yöntem
-export const createUser = async(email, password, navigate, displayName) => {
-    try {
-      let user = await createUserWithEmailAndPassword(auth, email, password);
-      //kullanıcı kayıt olur olmaz profilni ismini güncelleme methodu (register sayfasında parametre olarak gönderiliyor.)
-      await updateProfile(auth.currentUser, {
-        displayName: displayName,
-      });
-      console.log(user)
-     toastSuccessNotify("Üyelik işleminiz Tamamlandı");
-     navigate("/");
-    } catch (error) {
+export const createUser = async (email, password, displayName, navigate) => {
+  try {
+    let user = await createUserWithEmailAndPassword(auth, email, password);
+    //kullanıcı kayıt olur olmaz profilni ismini güncelleme methodu (register sayfasında parametre olarak gönderiliyor.)
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
+    console.log(user);
+    navigate("/kahveler");
+  } catch (error) {
     console.log(error.message);
-    }
-
-
-
+  }
 };
 
+
+// var olan kullanıcının giriş yapması için kullanılan yöntem.
+//navigate'i parametre olarak login componentinden aldık.
+// başarılı giriş olursa kahveler sayfasına yönlendirecek.
+  export const UserLogin = async (email, password) => {
+    try {
+      let uselogin = await signInWithEmailAndPassword(auth, email, password);
+         console.log(uselogin);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+export const userObserver = (setCurrentUser) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const { email, displayName } = user;
+      setCurrentUser({ email, displayName });
+    } else {
+      /*çıkış yaptığında displayname  gözükmeyecek*/
+      setCurrentUser(false);
+      console.log("kullanıcı çıkış yaptı");
+    }
+  });
+};
