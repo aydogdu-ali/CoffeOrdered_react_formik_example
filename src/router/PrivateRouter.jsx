@@ -4,7 +4,7 @@ import  AuthContextProvider, { AuthContext }  from "../context/AuthContextProvid
 
 const PrivateRouter = () => {
 
-    // replace eğer kullanıcı giriş yapmadıysa login sayfasına yönlendirilen kullanıcın tarayıcıdan geri gelmesini sağlar, Bunu yazmazsak kullanıcı geri sayfaya gidemez
+    // replace eğer kullanıcı giriş yapmadıysa login sayfasına yönlendirir. Kullanıcının tarayıcıdan geri gelmesini sağlar, Bunu yazmazsak kullanıcı geri sayfaya gidemez
  
     //  const { currentUser } = useContext(AuthContext);
     //  console.log(currentUser)

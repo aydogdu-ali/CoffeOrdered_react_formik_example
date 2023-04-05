@@ -2,14 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- 
 }
 
 .App {
-  height: 100vh;
   background-color: #c04a82;
-  
-  
+  height: 200rem;
 }
 
 /*Navbar*/
@@ -20,21 +17,20 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  box-shadow: 2px 2px 5px 3px bisque;
 }
 
 .navbar img {
   width: 4rem;
 }
 
-.navbarLogo{
-display: flex;
-justify-content: center;
-align-items: center;
-gap: .9rem;
-color:#fdd36a;
-letter-spacing: 0.1rem;
-
-
+.navbarLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  color: #fdd36a;
+  letter-spacing: 0.1rem;
 }
 
 .links {
@@ -53,12 +49,12 @@ letter-spacing: 0.1rem;
 /*Register*/
 
 .register {
- margin: auto;
-  margin-top: 8rem;
+  margin: auto;
+  margin-top: 7rem;
   width: 600px;
- 
+  height: 100vh;
 }
-.register h1{
+.register h1 {
   text-align: center;
   color: #fdd36a;
   margin-bottom: 2rem;
@@ -66,7 +62,7 @@ letter-spacing: 0.1rem;
 
 .form-input {
   width: 100%;
-  padding: 7px 2px;
+  padding: 6px 2px;
   color: white;
   font-weight: 600;
   letter-spacing: 0.1rem;
@@ -102,59 +98,182 @@ button {
   cursor: pointer;
 }
 
-.error{
+.error {
   color: bisque;
-  font-size:12px
+  font-size: 12px;
 }
 
-.input-error{
-  background-color:rgb(211, 193, 191)
+.input-error {
+  background-color: rgb(211, 193, 191);
 }
 
-
-.regBtn{
+.regBtn {
   display: inline-block;
-text-decoration: none;
-background-color: #f2b314;
-padding: .5rem 0.4rem;
-border-radius: 20px;
-margin-left: 25rem;
-color:#ec12da;
-font-weight: 600; 
-  
+  text-decoration: none;
+  background-color: #f2b314;
+  padding: 0.5rem 0.4rem;
+  border-radius: 20px;
+  margin-left: 25rem;
+  color: #ec12da;
+  font-weight: 600;
 }
 
-.home{
- 
+.home {
   width: 55%;
-  margin:5rem auto;
+  min-height: 100vh;
+  margin: 5rem auto;
+  padding-bottom: 5rem;
   text-align: center;
-  color:  #f2b314;
+  color: #f2b314;
   font-size: 1.3rem;
 }
 
-.home h1{
+.home h1,
+h2 {
   margin-bottom: 1rem;
 }
-.home p{
-  text-align:justify;
+
+.home h2 {
+  margin-top: 1rem;
+}
+.home p {
+  text-align: justify;
   margin-top: 0.7rem;
-  color:  bisque;
+  color: #f2b314;
+  letter-spacing: 0.2rem;
   line-height: 1.7rem;
+  text-indent: 1.5rem !important;
 }
 
+.fayda {
+  list-style-type: none;
+  text-align: center;
+}
+
+.faydaImg {
+  width: 25rem;
+  border-radius: 20px;
+}
+.fayda li {
+  margin-top: 1rem;
+
+  letter-spacing: 0.4rem;
+  line-height: 1.8rem;
+}
 
 /*Product*/
-.product{
-display: flex;
-flex-direction: column;
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.coffee {
+  width: 500px;
+  height: 500px;
+
+  border-color: #fdd36a;
+}
+
+
+.coffee h1 {
+  color: #fdd36a;
+  padding: 1rem;
+  letter-spacing: 0.4rem;
+}
+
+.coffeePicture {
+  width: 350px;
+  height: 270px;
+  border-radius: 20px;
+}
+
+.coffeePicture:hover {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+
+.icindekilerItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:1rem;
+}
+
+.itemList {
+  margin-top: 0.2rem;
+  /* text-align: left; */
+  color: white;
+  letter-spacing: 0.3rem;
+  font-size: larger;
+  text-transform: capitalize;
+}
+
+.btnSiparis:hover{
+  transform: scale(1.09);
 
 }
 
 
-.coffeePicture{
 
-  width: 10%;
-  height: 10%;
-  border-radius: 20px;
+/*response */
+@media screen and (max-width: 576px) {
+  /* navbar */
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .links {
+    margin-top: 1.2rem;
+  }
+
+  .navbar img {
+    width: 2rem;
+  }
+  /* home */
+  .home h1,
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .home p {
+    display: flex;
+    flex-wrap: wrap;
+    text-indent: 1rem !important;
+  }
+
+  .home img {
+    width: 16rem;
+  }
+
+  /*Register*/
+
+  .register {
+    margin-top: 4rem;
+  }
+
+  .register h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-input {
+    width: 70%;
+    margin: auto;
+  }
+
+  .body {
+    position: relative;
+  }
+  .regBtn {
+    margin-left: 20rem;
+  }
+
+  .form-input {
+    padding: 4px 2px;
+  }
 }

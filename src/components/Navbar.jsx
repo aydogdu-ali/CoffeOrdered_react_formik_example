@@ -7,6 +7,8 @@ import { logOut } from "../firebase/auth";
 const Navbar = () => {
   const navigate = useNavigate();
 
+
+  // firbase çıkış methodu
   const handlelogout = () => {
     logOut(navigate);
   };
@@ -14,18 +16,19 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbarLogo">
-        Size Bir <img src={logo} alt="logo" /> Sözümüz Var!
+        Size Bir <img  className="navbarImg"src={logo} alt="logo" /> Sözümüz Var!
       </div>
 
       <div className="links">
-        <NavLink to="/"> Anasayfa</NavLink>
-        <NavLink to="/kahveler">Kahvelerimiz</NavLink>
+        <NavLink to="/"> Home</NavLink>
+        <NavLink to="/kahveler">Menu</NavLink>
+        {/*ternary oparetörü kullandım kullanıcı varsa çıkışı göster yoksa girişi*/}
         {currentUser ? (
           <NavLink to="/login" onClick={handlelogout} role="button">
-            Çıkış
+            Logout
           </NavLink>
         ) : (
-          <NavLink to="/login"> Giriş</NavLink>
+          <NavLink to="/login"> Sign in</NavLink>
         )}
       </div>
     </div>

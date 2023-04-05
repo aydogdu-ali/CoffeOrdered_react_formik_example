@@ -21,7 +21,7 @@ const Register = () => {
  
   // formik yapısının içinde kullanacağımız yapılaıı çıkartarak kullanabiliriz.
   // const formik = useFormik({
-  const { values, errors, handleChange, handleSubmit, isSubmitting } =
+  const { values, errors, handleChange, handleSubmit, handleBlur,touched, isSubmitting } =
     useFormik({
       initialValues: {
         username: "",
@@ -60,11 +60,14 @@ const Register = () => {
           type="text"
           value={values.username}
           onChange={handleChange}
+          onBlur={handleBlur}
           id="username"
           placeholder="lütfen kullanıcı adı giriniz!"
-          className={errors.username ? "input-error" : ""}
+          className={errors.username && touched.username ? "input-error" : ""}
         />
-        {errors.username && <p className="error">{errors.username}</p>}
+        {errors.username && touched.username && (
+          <p className="error">{errors.username}</p>
+        )}
       </div>
       <div className="form-input">
         <label> Email</label>
@@ -72,24 +75,30 @@ const Register = () => {
           type="email"
           value={values.email}
           onChange={handleChange}
+          onBlur={handleBlur}
           id="email"
           placeholder="lütfen mail adresinizi giriniz!"
-          className={errors.email ? "input-error" : ""}
+          className={errors.email && touched.email ? "input-error" : ""}
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+        {errors.email && touched.email && (
+          <p className="error">{errors.email}</p>
+        )}
       </div>
-     
+
       <div className="form-input">
         <label> Şifre</label>
         <input
           type="password"
           value={values.password}
           onChange={handleChange}
+          onBlur={handleBlur}
           id="password"
           placeholder="lütfen şifrenizi giriniz!"
-          className={errors.password ? "input-error" : ""}
+          className={errors.password && touched.password ? "input-error" : ""}
         />
-        {errors.password && <p className="error">{errors.password}</p>}
+        {errors.password && touched.password && (
+          <p className="error">{errors.password}</p>
+        )}
       </div>
 
       <div className="form-input">
@@ -98,13 +107,17 @@ const Register = () => {
           type="password"
           value={values.repeatPassword}
           onChange={handleChange}
+          onBlur={handleBlur}
           id="repeatPassword"
           placeholder="lütfen şifrenizi tekrar giriniz!"
-          className={errors.repeatPassword ? "input-error" : ""}
+          className={
+            errors.repeatPassword && touched.repeatPassword ? "input-error" : ""
+          }
         />
-        {errors.repeatPassword && (
-          <p className="error">{errors.repeatPassword}</p>
-        )}
+        {errors.repeatPassword &&
+          touched.repeatPassword && (
+            <p className="error">{errors.repeatPassword}</p>
+          )}
       </div>
       <button type="submit">Kaydet</button>
     </form>

@@ -17,19 +17,23 @@ const Login = () => {
 
  
 
-
-
+// formikten kullanacağım methodları tanımlıyoruz.
 
   const { values, errors, handleChange, handleSubmit, touched, handleBlur } =
     useFormik({
       initialValues: {
+        // başlangıç statelerini tanımlıyoruz
         email: "",
         password: "",
       },
 
+      // yup da tanımladıgımız özellikleri import ediyoruz
       validationSchema: loginSchema,
+      // formu gönderdiğimde olacak aksiyonları tanımlıyoruz.
       onSubmit: (values, actions) => {
+        // burada kayıtlı kullanıcı login oluyor
         UserLogin(values.email, values.password, navigate);
+        // formudaki bilgiler resetleniyor.
         actions.resetForm();
         console.log("tıklandı", values);
       },
@@ -50,6 +54,7 @@ const Login = () => {
             autoComplete="off"
             placeholder="lütfen mail adresinizi giriniz!"
             onBlur={handleBlur}
+            // inputa girildiğinde hata varsa gösterecek
             className={errors.email && touched.email ? "input-error" : ""}
           />
           {errors.email && touched.email && (
