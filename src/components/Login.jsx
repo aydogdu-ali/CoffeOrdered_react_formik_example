@@ -1,24 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from "react";
 import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
-import { useNavigate, Link } from 'react-router-dom';
-import { UserLogin } from '../firebase/auth';
-import  { AuthContext } from '../context/AuthContextProvider';
-
-
-
-
-
+import { useNavigate, Link } from "react-router-dom";
+import { UserLogin } from "../firebase/auth";
+import { AuthContext } from "../context/AuthContextProvider"
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
- const navigate = useNavigate();
-    const { currentUser } = useContext(AuthContext);
-
- 
-
-// formikten kullanacağım methodları tanımlıyoruz.
-
+  // formikten kullanacağım methodları tanımlıyoruz.
   const { values, errors, handleChange, handleSubmit, touched, handleBlur } =
     useFormik({
       initialValues: {
@@ -39,11 +30,10 @@ const Login = () => {
       },
     });
 
-
   return (
     <div>
       <form className="register" onSubmit={handleSubmit}>
-        <h1>Lütfen giriş bilgilerini doldurunuz</h1>
+        <h3>Please Fill in The Form </h3>
         <div className="form-input">
           <label> Email</label>
           <input
@@ -52,7 +42,7 @@ const Login = () => {
             onChange={handleChange}
             id="email"
             autoComplete="off"
-            placeholder="lütfen mail adresinizi giriniz!"
+            placeholder="Enter email address please!"
             onBlur={handleBlur}
             // inputa girildiğinde hata varsa gösterecek
             className={errors.email && touched.email ? "input-error" : ""}
@@ -69,7 +59,7 @@ const Login = () => {
             onChange={handleChange}
             id="password"
             autoComplete="off"
-            placeholder="lütfen şifrenizi giriniz!"
+            placeholder="Enter password please!"
             onBlur={handleBlur}
             className={errors.password && touched.password ? "input-error" : ""}
           />
@@ -78,29 +68,15 @@ const Login = () => {
           )}
         </div>
         <Link className="regBtn" to="/register">
-          Üyelik İçin Tıklayınız
+          Click for Membership
         </Link>
 
         <button onSubmit={handleSubmit} type="submit">
-          Giriş
+          Log in
         </button>
       </form>
     </div>
   );
-}
+};
 
-export default Login
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+export default Login;

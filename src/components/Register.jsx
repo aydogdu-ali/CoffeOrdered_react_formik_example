@@ -53,16 +53,16 @@ const Register = () => {
 
   return (
     <form className="register" onSubmit={handleSubmit}>
-      <h1>Lütfen formu eksizsiz doldurunuz</h1>
+      <h3> Please Fill out the Form Completely</h3>
       <div className="form-input">
-        <label>Kullanıcı Adı</label>
+        <label>Username</label>
         <input
           type="text"
           value={values.username}
           onChange={handleChange}
           onBlur={handleBlur}
           id="username"
-          placeholder="lütfen kullanıcı adı giriniz!"
+          placeholder="Enter username please!"
           className={errors.username && touched.username ? "input-error" : ""}
         />
         {errors.username && touched.username && (
@@ -77,7 +77,7 @@ const Register = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           id="email"
-          placeholder="lütfen mail adresinizi giriniz!"
+          placeholder="Enter email address please!"
           className={errors.email && touched.email ? "input-error" : ""}
         />
         {errors.email && touched.email && (
@@ -86,14 +86,14 @@ const Register = () => {
       </div>
 
       <div className="form-input">
-        <label> Şifre</label>
+        <label> Password</label>
         <input
           type="password"
           value={values.password}
           onChange={handleChange}
           onBlur={handleBlur}
           id="password"
-          placeholder="lütfen şifrenizi giriniz!"
+          placeholder="Enter password please!"
           className={errors.password && touched.password ? "input-error" : ""}
         />
         {errors.password && touched.password && (
@@ -102,24 +102,23 @@ const Register = () => {
       </div>
 
       <div className="form-input">
-        <label> Şifrenizi Tekrar Giriniz</label>
+        <label> Enter Your Password Again </label>
         <input
           type="password"
           value={values.repeatPassword}
           onChange={handleChange}
           onBlur={handleBlur}
           id="repeatPassword"
-          placeholder="lütfen şifrenizi tekrar giriniz!"
+          placeholder="Enter password again, please!"
           className={
             errors.repeatPassword && touched.repeatPassword ? "input-error" : ""
           }
         />
-        {errors.repeatPassword &&
-          touched.repeatPassword && (
-            <p className="error">{errors.repeatPassword}</p>
-          )}
+        {errors.repeatPassword && touched.repeatPassword && (
+          <p className="error">{errors.repeatPassword}</p>
+        )}
       </div>
-      <button type="submit">Kaydet</button>
+      <button type="submit">Save</button>
     </form>
   );
 };

@@ -1,25 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import  AuthContextProvider, { AuthContext }  from "../context/AuthContextProvider";
+import  {
+  AuthContext,
+} from "../context/AuthContextProvider";
 
 const PrivateRouter = () => {
+  // replace eğer kullanıcı giriş yapmadıysa login sayfasına yönlendirir. Kullanıcının tarayıcıdan geri gelmesini sağlar, Bunu yazmazsak kullanıcı geri sayfaya gidemez
 
-    // replace eğer kullanıcı giriş yapmadıysa login sayfasına yönlendirir. Kullanıcının tarayıcıdan geri gelmesini sağlar, Bunu yazmazsak kullanıcı geri sayfaya gidemez
- 
-    //  const { currentUser } = useContext(AuthContext);
-    //  console.log(currentUser)
-    const currentUser = true
+   const { currentUser } = useContext(AuthContext);
+   console.log(currentUser)
 
-   return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
 
+
+  return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
-
-export default PrivateRouter
-
-
-
-
-
-
-
+export default PrivateRouter;

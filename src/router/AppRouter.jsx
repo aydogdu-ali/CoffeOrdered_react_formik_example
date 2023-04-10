@@ -7,7 +7,11 @@ import Navbar from "../components/Navbar";
 import Product from "../components/Product";
 import PrivateRouter from "./PrivateRouter";
 
+
 const AppRouter = () => {
+
+  
+
   return (
     <BrowserRouter>
       <Navbar />
